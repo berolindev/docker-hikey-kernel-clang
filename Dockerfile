@@ -20,8 +20,8 @@ RUN git clone -b android-hikey-linaro-4.4-clang --depth 1 git://android-git.lina
 RUN echo 'cat <<EOF' >>.bashrc
 RUN echo 'To build the kernel, use' >>.bashrc
 RUN echo 'cd hikey-clang' >>.bashrc
-RUN echo 'make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC=clang HOSTCC=clang hikey_defconfig' >>.bashrc
-RUN echo 'make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC=clang HOSTCC=clang -j`getconf _NPROCESSORS_ONLN`' >>.bashrc
+RUN echo 'make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- LD=aarch64-linux-gnu-ld.bfd CC=clang HOSTCC=clang hikey_defconfig' >>.bashrc
+RUN echo 'make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- LD=aarch64-linux-gnu-ld.bfd CC=clang HOSTCC=clang -j`getconf _NPROCESSORS_ONLN`' >>.bashrc
 RUN echo 'EOF' >>.bashrc
 
 CMD ["/bin/bash", "-l"]
